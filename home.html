@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToyHub - Marketplace Mainan</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f8fc;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff7139;
+        }
+
+        .logo span {
+            color: #252b55;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #ff7139;
+        }
+
+        /* HERO */
+        .hero {
+            margin: 30px 7%;
+            padding: 55px;
+            background: linear-gradient(120deg, #ff8b5e, #ffb36b);
+            border-radius: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .hero button {
+            padding: 13px 25px;
+            border: none;
+            background: white;
+            color: #ff7139;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .hero img {
+            width: 240px;
+            max-width: 40%;
+        }
+
+        /* SECTION */
+        .container {
+            padding: 20px 7%;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+            font-size: 25px;
+            color: #252b55;
+        }
+
+        /* CATEGORY */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .category {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+        }
+
+        .category .emoji {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #ff7139;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .condition {
+            display: inline-block;
+            background: #e5f7eb;
+            color: #238448;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .product-info button {
+            width: 100%;
+            padding: 10px;
+            background: #252b55;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .product-info button:hover {
+            background: #ff7139;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            text-align: center;
+            background: #252b55;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero {
+                padding: 30px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Toy<span>Hub.</span></div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#kategori">Kategori</a>
+            <a href="#produk">Produk</a>
+            <a href="#kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Temukan Mainan Favoritmu di ToyHub!</h1>
+            <p>
+                Jelajahi berbagai koleksi mainan impor menarik.
+                Mulai dari koleksi baru hingga mainan preloved
+                dengan harga yang lebih terjangkau.
+            </p>
+            <button onclick="location.href='#produk'">
+                Belanja Sekarang
+            </button>
+        </div>
+
+        <img
+            src="https://placehold.co/400x350/fff2e8/ff7139?text=ToyHub+Collection"
+            alt="Koleksi mainan ToyHub">
+    </section>
+
+    <!-- CATEGORY -->
+    <section class="container" id="kategori">
+        <h2 class="section-title">Kategori Mainan</h2>
+
+        <div class="categories">
+            <div class="category">
+                <div class="emoji">🧸</div>
+                <h3>Boneka</h3>
+            </div>
+
+            <div class="category">
+                <div class="emoji">🚗</div>
+                <h3>Miniatur</h3>
+            </div>
+
+            <div class="category">
+                <div class="emoji">🤖</div>
+                <h3>Action Figure</h3>
+            </div>
+
+            <div class="category">
+                <div class="emoji">🧩</div>
+                <h3>Collectibles</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="container" id="produk">
+        <h2 class="section-title">Produk Pilihan</h2>
+
+        <div class="products">
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x300/fce4ec/333?text=Teddy+Bear"
+                     alt="Teddy Bear">
+                <div class="product-info">
+                    <h3>Teddy Bear Import</h3>
+                    <div class="price">Rp85.000</div>
+                    <span class="condition">Baru</span>
+                    <button>Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x300/e3f2fd/333?text=Mini+Car"
+                     alt="Mini Car">
+                <div class="product-info">
+                    <h3>Miniatur Diecast</h3>
+                    <div class="price">Rp45.000</div>
+                    <span class="condition">Bekas</span>
+                    <button>Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x300/e8f5e9/333?text=Robot+Figure"
+                     alt="Robot Figure">
+                <div class="product-info">
+                    <h3>Robot Action Figure</h3>
+                    <div class="price">Rp120.000</div>
+                    <span class="condition">Baru</span>
+                    <button>Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x300/fff3e0/333?text=Collectible"
+                     alt="Collectible">
+                <div class="product-info">
+                    <h3>Collectible Figure</h3>
+                    <div class="price">Rp65.000</div>
+                    <span class="condition">Bekas</span>
+                    <button>Tambah ke Keranjang</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="kontak">
+        <h2>ToyHub.</h2>
+        <p>Find Your Favorite Toys, Only at ToyHub.</p>
+        <p>&copy; 2026 ToyHub. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+
